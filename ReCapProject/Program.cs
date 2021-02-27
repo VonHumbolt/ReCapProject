@@ -12,18 +12,22 @@ namespace Console
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            ColorManager colorManager = new ColorManager(new EfColorDal());
+           
+            UserManager userManager = new UserManager(new EfUserDal());
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            var result = brandManager.Delete(new Brand {BrandName = "Skoda" });
+            var result = rentalManager.Add(new Rental {CarId = 5, CustomerId = 3, RentDate = new DateTime(2021, 2, 22)});
+
             if (result.Success)
             {
-                foreach (var brand in brandManager.GetAll().Data)
-                {
-                    System.Console.WriteLine(brand.BrandName);
-                }
+                System.Console.WriteLine(result.Messages);
             }
-            
+            else
+            {
+                System.Console.WriteLine(result.Messages);
+            }
+
         }
     }
 }
