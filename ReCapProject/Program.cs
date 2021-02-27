@@ -14,13 +14,16 @@ namespace Console
             CarManager carManager = new CarManager(new EfCarDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            
-            
-            
-            foreach (var car in carManager.GetCarDetailDtos())
+
+            var result = brandManager.Delete(new Brand {BrandName = "Skoda" });
+            if (result.Success)
             {
-                System.Console.WriteLine(car.BrandName + " / " + car.CarName);
-            } 
+                foreach (var brand in brandManager.GetAll().Data)
+                {
+                    System.Console.WriteLine(brand.BrandName);
+                }
+            }
+            
         }
     }
 }
