@@ -34,5 +34,24 @@ namespace DataAccess.EntityFramework
                 return result.ToList();
             }
         }
+
+        public List<CarImageDetailDto> GetCarImages(int carId)
+        {
+            using (CarDatabaseContext context = new CarDatabaseContext())
+            {
+                var result = from c in context.Cars where c.CarId == carId
+                             join img in context.CarImages
+                             on c.CarId equals img.CarId
+                             select new CarImageDetailDto
+                             {
+                                 CarId = c.CarId,
+                                 CarName = c.CarName,
+                                 CarImage = img.ImagePath
+                             };
+
+                return result.ToList();
+            }
+        }
+
     }
 }

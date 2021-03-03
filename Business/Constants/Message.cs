@@ -13,5 +13,7 @@ namespace Business.Constants
         public static string ErrorReturnDateNull = "Araba şu anda kiralanmış durumda!";
 
         public static string SuccessfullyRented = "İşlem başarılı, Araba kiralandı!";
+
+        public static string CarImageCountIsFull = "Arabanın resim sayısı en fazla 5 olabilir.";
     }
 }
