@@ -21,5 +21,6 @@ namespace Business.Abstract
 
         IDataResult<List<CarImageDetailDto>> GetCarImages(int carId);
 
+        IResult AddTransactionalTest(Car car);
     }
 }
