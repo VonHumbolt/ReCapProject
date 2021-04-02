@@ -14,7 +14,8 @@ namespace DataAccess.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, CarDatabaseContext>, ICarDal
     {
-        public List<CarDetailDto> GetCarDetailDtos()
+
+        public List<CarDetailDto> GetCarDetailDtos(Expression<Func<CarDetailDto, bool>> filter = null)
         {
             using (CarDatabaseContext context = new CarDatabaseContext())
             {
@@ -23,18 +24,27 @@ namespace DataAccess.EntityFramework
                              on c.BrandId equals b.BrandId
                              join color in context.Colors
                              on c.ColorId equals color.ColorId
+                             join img in context.CarImages
+                             on c.CarId equals img.CarId
                              select new CarDetailDto
                              {
                                  CarId = c.CarId,
+                                 ColorId = c.ColorId,
+                                 BrandId = c.BrandId,
                                  CarName = c.CarName,
                                  BrandName = b.BrandName,
                                  ColorName = color.ColorName,
-                                 DailyPrice = c.DailyPrice
+                                 DailyPrice = c.DailyPrice,
+                                 ModelYear = c.ModelYear,
+                                 ImagePath = img.ImagePath,
+                                 Findeks = c.Findeks
                              };
 
-                return result.ToList();
+                return filter == null ?
+                    result.ToList() : result.Where(filter).ToList();
             }
         }
+
 
         public List<CarImageDetailDto> GetCarImages(int carId)
         {

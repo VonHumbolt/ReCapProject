@@ -11,17 +11,10 @@ namespace Business.Concrete
 {
     public class BankManager : IBankService
     {
-        private ICardInfoDal _cardInfoDal;
-
-        public BankManager(ICardInfoDal cardInfoDal)
+        // Credit card valid mi !
+        public IResult Pay()
         {
-            _cardInfoDal = cardInfoDal;
-        }
-
-        public IResult Rent(CardInfo cardInfo)
-        {
-            _cardInfoDal.Add(cardInfo);
-            return new SuccessResult("Ödeme işlemi tamamlandı!");
+            return new SuccessResult("Ödeme işlemi başarılı!");
         }
     }
 }

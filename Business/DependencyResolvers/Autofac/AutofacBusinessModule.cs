@@ -43,7 +43,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
 
             builder.RegisterType<BankManager>().As<IBankService>().SingleInstance();
-            builder.RegisterType<EfCarInfoDal>().As<ICardInfoDal>().SingleInstance();
+
+            builder.RegisterType<UserCardDetailManager>().As<IUserCardDetailService>().SingleInstance();
+            builder.RegisterType<EfUserCardDetailDal>().As<IUserCardDetailDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

@@ -7,9 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarInfoDal : EfEntityRepositoryBase<CardInfo, CarDatabaseContext>, ICardInfoDal
+    public class EfUserCardDetailDal : EfEntityRepositoryBase<UserCardDetail, CarDatabaseContext>, IUserCardDetailDal
     {
-
     }
-   
 }

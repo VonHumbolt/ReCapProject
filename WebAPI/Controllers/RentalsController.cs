@@ -16,10 +16,12 @@ namespace WebAPI.Controllers
     {
         IRentalService _rentalService;
         IBankService _bankService;
-        public RentalsController(IRentalService rentalService, IBankService bankService)
+        IUserCardDetailService _userCardDetailService;
+        public RentalsController(IRentalService rentalService, IBankService bankService, IUserCardDetailService userCardDetailService)
         {
             _rentalService = rentalService;
             _bankService = bankService;
+            _userCardDetailService = userCardDetailService;
         }
 
         [HttpGet("getall")]
@@ -97,10 +99,32 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("rentCar")]
-        public IActionResult RentCar(CardInfo cardInfo)
+        [HttpGet("pay")]
+        public IActionResult Pay()
         {
-            var result = _bankService.Rent(cardInfo);
+            var result = _bankService.Pay();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getUserCardNumber")]
+        public IActionResult GetUserCardNumber(int userId)
+        {
+            var result = _userCardDetailService.GetCarDetailByUserId(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("addCardNumber")]
+        public IActionResult AddUserCardNumber(UserCardDetail userCardDetail)
+        {
+            var result = _userCardDetailService.Add(userCardDetail);
             if (result.Success)
             {
                 return Ok(result);

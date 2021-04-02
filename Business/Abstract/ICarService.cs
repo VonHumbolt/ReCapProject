@@ -19,7 +19,14 @@ namespace Business.Abstract
 
         IDataResult<List<CarDetailDto>> GetCarDetailDtos();
 
-        IDataResult<List<CarImageDetailDto>> GetCarImages(int carId);
+        IDataResult<List<CarDetailDto>> GetCarDetailByColorId(int colorId);
+        IDataResult<List<CarDetailDto>> GetCarDetailByBrandId(int brandId);
+
+        IDataResult<List<CarDetailDto>> GetCarDetailByCarId(int carId);
+
+        IDataResult<List<CarDetailDto>> FilterCarDetailByColorAndBrandId(int colorId, int brandId);
+
+        IDataResult<List<CarImageDetailDto>> GetCarImages(int carId); // Gerek kalmayabilir!
 
         IResult AddTransactionalTest(Car car);
     }

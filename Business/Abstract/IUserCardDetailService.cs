@@ -6,9 +6,10 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IBankService
+    public interface IUserCardDetailService
     {
-        IResult Pay();
+        IDataResult<UserCardDetail> GetCarDetailByUserId(int userId);
 
+        IResult Add(UserCardDetail userCardDetail);
     }
 }

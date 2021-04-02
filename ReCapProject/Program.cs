@@ -21,11 +21,11 @@ namespace Console
 
             if (result.Success)
             {
-                System.Console.WriteLine(result.Messages);
+                System.Console.WriteLine(result.Message);
             }
             else
             {
-                System.Console.WriteLine(result.Messages);
+                System.Console.WriteLine(result.Message);
             }
 
         }
