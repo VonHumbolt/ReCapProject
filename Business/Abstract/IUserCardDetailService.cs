@@ -10,6 +10,6 @@ namespace Business.Abstract
     {
         IDataResult<UserCardDetail> GetCarDetailByUserId(int userId);
 
-        IResult Add(UserCardDetail userCardDetail);
+        IResult Update(UserCardDetail userCardDetail);
     }
 }

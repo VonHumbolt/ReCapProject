@@ -17,15 +17,15 @@ namespace Business.Concrete
             _userCardDetailDal = userCardDetailDal;
         }
 
-        public IResult Add(UserCardDetail userCardDetail)
+        public IResult Update(UserCardDetail userCardDetail)
         {
-            _userCardDetailDal.Add(userCardDetail);
+            _userCardDetailDal.Update(userCardDetail);
             return new SuccessResult("Kart Bilgileri kaydedildi");
         }
 
         public IDataResult<UserCardDetail> GetCarDetailByUserId(int userId)
         {
-            return new SuccessDataResult<UserCardDetail>(_userCardDetailDal.GetById(u => u.UserId == userId));
+            return new SuccessDataResult<UserCardDetail>(_userCardDetailDal.GetById(u => u.Id == userId));
         }
     }
 }

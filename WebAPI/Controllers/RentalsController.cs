@@ -121,10 +121,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("addCardNumber")]
+        [HttpPost("updateCardNumber")]
         public IActionResult AddUserCardNumber(UserCardDetail userCardDetail)
         {
-            var result = _userCardDetailService.Add(userCardDetail);
+            var result = _userCardDetailService.Update(userCardDetail);
             if (result.Success)
             {
                 return Ok(result);
