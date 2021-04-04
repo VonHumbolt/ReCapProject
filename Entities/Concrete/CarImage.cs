@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Entities.Concrete
-{// oluşturunuz. (Id,CarId,ImagePath,Date) 
+{
     public class CarImage: IEntity
     {
         public int Id { get; set; }

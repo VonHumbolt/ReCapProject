@@ -70,6 +70,22 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-       
+
+        [HttpPost("updateUser")]
+        public IActionResult UpdateUser(UserForUpdateDto user)
+        {
+            var isUserExist = _userService.GetUserById(user.Id);
+            if (!isUserExist.Success)
+            {
+                return BadRequest(isUserExist);
+            }
+
+            var result = _authService.UpdateUser(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

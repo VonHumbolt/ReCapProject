@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -11,8 +13,8 @@ namespace Business.Concrete
 {
     public class BankManager : IBankService
     {
-        // Credit card valid mi !
-        public IResult Pay()
+        [ValidationAspect(typeof(BankValidator))]
+        public IResult Pay(UserCardDetail userCardDetail)
         {
             return new SuccessResult("Ödeme işlemi başarılı!");
         }

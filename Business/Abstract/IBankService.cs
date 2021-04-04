@@ -8,7 +8,7 @@ namespace Business.Abstract
 {
     public interface IBankService
     {
-        IResult Pay();
+        IResult Pay(UserCardDetail cardDetail);
 
     }
 }
