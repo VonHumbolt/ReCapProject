@@ -29,6 +29,27 @@ namespace DataAccess.Concrete.EntityFramework
 
                 return result.ToList();
             }
-        } 
+        }
+
+        public RegisteredCustomerDto GetRegisteredCustomerDtoByEmail(string email)
+        {
+            using (CarDatabaseContext context = new CarDatabaseContext())
+            {
+                var result = from user in context.Users
+                             where user.Email == email
+                             join customer in context.Customers
+                             on user.Id equals customer.UserId
+                             select new RegisteredCustomerDto
+                             {
+                                 CompanyName = customer.CompanyName,
+                                 Email = user.Email,
+                                 FirstName = user.FirstName,
+                                 LastName = user.LastName,
+                                 Findeks = customer.Findeks
+                             };
+
+                return result.SingleOrDefault();
+            }
+        }
     }
 }

@@ -19,6 +19,6 @@ namespace Business.Abstract
 
         IDataResult<List<RegisteredCustomerDto>> GetRegisteredCustomerDtos();
 
-
+        IDataResult<RegisteredCustomerDto> GetRegisteredCustomerDtoByEmail(string email);
     }
 }
